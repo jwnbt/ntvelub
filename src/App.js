@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [memory, setMemory] = useState("");
+  const [characteristic, setCharacteristic] = useState([]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  console.log(characteristic);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input type="text" onChange={(event) => setMemory(event.target.value)} />
+      <textarea
+        onChange={(event) => setCharacteristic(event.target.value.split(/\n/))}
+      ></textarea>
+      <input type="submit" />
+    </form>
   );
 }
 
